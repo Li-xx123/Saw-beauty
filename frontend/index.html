@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF8F5">
+  <title>发现 — 风景光影</title>
+  <meta name="description" content="发现世界各地的光影作品。">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="min-h-screen lp-bg lp-fg" data-page="discover">
+  <main id="app">
+    <div data-include="nav"></div>
+
+    <!-- 主体内容 -->
+    <div class="pt-16 pb-24 md:pb-12">
+
+      <!-- Hero -->
+      <section class="relative h-56 sm:h-72 md:h-80 overflow-hidden">
+        <img src="assets/image_1_r53wpn.jpg" class="absolute inset-0 w-full h-full object-cover" alt="发现封面">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-lp-bg via-lp-bg/30 to-transparent"></div>
+        <div class="relative h-full max-w-lp-container mx-auto px-4 sm:px-6 flex flex-col justify-end pb-6 sm:pb-8">
+          <p class="lp-caption text-sm text-lp-primary reveal">DISCOVER · 发现</p>
+          <h1 class="lp-display text-3xl sm:text-4xl md:text-5xl text-white mt-2 reveal">世界的光影，<br class="sm:hidden">在此相遇</h1>
+          <p class="lp-body text-white/80 mt-3 max-w-xl reveal">从雪山夕照到霓虹夜色，探索摄影师们用镜头留下的呼吸。</p>
+          <div class="mt-4 reveal">
+            <button data-search-open class="inline-flex items-center gap-2 px-4 h-10 rounded-lp-full bg-white/15 backdrop-blur text-white text-sm font-medium hover:bg-white/25 transition-colors border border-white/20">
+              <i data-lucide="search" class="w-4 h-4"></i>搜索作品、地点、分类
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 分类筛选 -->
+      <section class="max-w-lp-container mx-auto px-4 sm:px-6 mt-6">
+        <div id="chips" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1"></div>
+      </section>
+
+      <!-- 作品网格 -->
+      <section class="max-w-lp-container mx-auto px-4 sm:px-6 mt-5">
+        <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+          <h2 class="lp-h2 text-lg sm:text-xl text-lp-fg"><span id="result-label">全部作品</span></h2>
+          <div class="flex items-center gap-3">
+            <span id="result-count" class="lp-caption text-sm text-lp-fg-muted"></span>
+            <div id="sort-chips" class="flex items-center gap-2"></div>
+          </div>
+        </div>
+        <div id="discover-gallery" class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4"></div>
+        <div id="discover-empty" class="hidden text-center py-16">
+          <div class="w-14 h-14 mx-auto rounded-lp-full bg-lp-surface-2 flex items-center justify-center mb-4">
+            <i data-lucide="search-x" class="w-7 h-7 text-lp-fg-subtle"></i>
+          </div>
+          <p class="lp-body text-lp-fg-muted">该分类暂无作品</p>
+        </div>
+      </section>
+    </div>
+
+    <div data-include="tabbar"></div>
+  </main>
+
+  <div data-include="footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/partial.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/discover.js"></script>
+</body>
+</html>

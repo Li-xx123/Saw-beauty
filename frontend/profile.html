@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF8F5">
+  <title>个人主页 · 风景光影</title>
+  <meta name="description" content="阿哲的个人主页 — 追逐光影的旅人，用镜头记录世界的呼吸。">
+
+  <!-- Brand tokens & typography -->
+  <link rel="stylesheet" href="css/theme.css">
+
+  <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS (Play CDN) + brand config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="min-h-screen lp-bg lp-fg" data-page="profile">
+  <main id="app">
+
+    <!-- 顶部导航栏（由 partial.js 注入） -->
+    <div data-include="nav"></div>
+
+    <!-- 主体内容 -->
+    <div class="pt-16 pb-24 md:pb-12" id="profile-root">
+
+      <!-- 头部区域：封面 + 个人信息 -->
+      <section>
+        <!-- 封面背景图 -->
+        <div class="relative h-44 sm:h-56 md:h-64 overflow-hidden">
+          <img data-parallax src="assets/image_1_r53wpn.jpg" class="absolute inset-0 w-full h-[120%] object-cover will-change-transform" alt="封面背景">
+          <div class="absolute inset-0 bg-black/20"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-lp-bg/60 via-transparent to-transparent"></div>
+        </div>
+
+        <!-- 个人信息 -->
+        <div class="max-w-lp-container mx-auto px-4 sm:px-6">
+          <div class="-mt-10 sm:-mt-12 flex flex-col md:flex-row md:items-end gap-4">
+            <img src="assets/image_0_r53wpn.jpg" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-lp-surface object-cover shadow-lp-md reveal" alt="阿哲的头像">
+            <div class="flex-1 pb-1">
+              <h1 class="lp-h1 text-2xl sm:text-3xl text-lp-fg reveal" data-profile-name>阿哲</h1>
+              <p class="lp-body text-lp-fg-muted mt-1 reveal" data-profile-tagline>追逐光影的旅人 | 用镜头记录世界的呼吸</p>
+            </div>
+            <div class="flex items-center gap-2 sm:gap-3 pb-1">
+              <button data-modal-open="edit-modal" class="flex items-center gap-1.5 px-3 sm:px-4 h-9 rounded-lp-md border border-lp-border-strong bg-lp-surface text-sm font-medium text-lp-fg hover:bg-lp-surface-2 transition-colors">
+                <i data-lucide="pencil" class="w-4 h-4"></i>编辑资料
+              </button>
+              <button data-modal-open="share-modal" class="flex items-center gap-1.5 px-3 sm:px-4 h-9 rounded-lp-md border border-lp-border-strong bg-lp-surface text-sm font-medium text-lp-fg hover:bg-lp-surface-2 transition-colors">
+                <i data-lucide="share-2" class="w-4 h-4"></i>分享主页
+              </button>
+            </div>
+          </div>
+
+          <!-- 统计数据 -->
+          <div class="mt-6 flex items-center gap-6 sm:gap-8 md:gap-12 reveal">
+            <div class="flex flex-col">
+              <span class="lp-mono text-2xl text-lp-fg">128</span>
+              <span class="lp-caption text-xs text-lp-fg-muted mt-0.5">作品</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="lp-mono text-2xl text-lp-fg">12.3k</span>
+              <span class="lp-caption text-xs text-lp-fg-muted mt-0.5">获藏</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="lp-mono text-2xl text-lp-fg">8</span>
+              <span class="lp-caption text-xs text-lp-fg-muted mt-0.5">合集</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="lp-mono text-2xl text-lp-fg">256</span>
+              <span class="lp-caption text-xs text-lp-fg-muted mt-0.5">关注</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab 切换栏 + 作品网格 -->
+      <section class="max-w-lp-container mx-auto px-4 sm:px-6 mt-8">
+        <div class="flex items-center gap-6 border-b border-lp-border overflow-x-auto no-scrollbar" role="tablist" aria-label="主页内容切换">
+          <button class="profile-tab pb-3 pt-1 text-sm font-medium text-lp-primary border-b-2 border-lp-primary -mb-px transition-colors whitespace-nowrap" data-tab="works" role="tab" aria-selected="true">作品</button>
+          <button class="profile-tab pb-3 pt-1 text-sm font-medium text-lp-fg-muted border-b-2 border-transparent hover:text-lp-fg -mb-px transition-colors whitespace-nowrap" data-tab="collections" role="tab" aria-selected="false">合集</button>
+          <button class="profile-tab pb-3 pt-1 text-sm font-medium text-lp-fg-muted border-b-2 border-transparent hover:text-lp-fg -mb-px transition-colors whitespace-nowrap" data-tab="favorites" role="tab" aria-selected="false">收藏</button>
+        </div>
+
+        <!-- 作品网格 -->
+        <div id="grid" class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <!-- 作品（静态回退，profile.js 会接管并补全收藏/合集） -->
+          <a href="#" data-photo-id="w1" class="lp-card group relative rounded-lp-lg overflow-hidden block bg-lp-surface-2 shadow-lp-sm reveal">
+            <img src="assets/image_1_r53wpn.jpg" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" alt="玉龙雪山夕照" loading="lazy">
+            <div class="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="flex items-center justify-between">
+                <h3 class="text-white font-medium text-sm">玉龙雪山夕照</h3>
+                <button type="button" class="lp-like-btn flex items-center gap-1 text-white hover:text-lp-primary transition-colors" data-liked="false" data-likes="2300" aria-label="收藏/取消收藏">
+                  <i data-lucide="heart" class="w-4 h-4"></i><span class="text-sm lp-mono" data-likes-label>2.3k</span>
+                </button>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" data-photo-id="w2" class="lp-card group relative rounded-lp-lg overflow-hidden block bg-lp-surface-2 shadow-lp-sm reveal">
+            <img src="assets/image_0_r53wpn.jpg" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" alt="雾漫林间" loading="lazy">
+            <div class="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="flex items-center justify-between">
+                <h3 class="text-white font-medium text-sm">雾漫林间</h3>
+                <button type="button" class="lp-like-btn flex items-center gap-1 text-white hover:text-lp-primary transition-colors" data-liked="false" data-likes="956" aria-label="收藏/取消收藏">
+                  <i data-lucide="heart" class="w-4 h-4"></i><span class="text-sm lp-mono" data-likes-label>956</span>
+                </button>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" data-photo-id="w3" class="lp-card group relative rounded-lp-lg overflow-hidden block bg-lp-surface-2 shadow-lp-sm reveal">
+            <img src="assets/image_2_r53wpn.jpg" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" alt="海岸线的呼吸" loading="lazy">
+            <div class="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="flex items-center justify-between">
+                <h3 class="text-white font-medium text-sm">海岸线的呼吸</h3>
+                <button type="button" class="lp-like-btn flex items-center gap-1 text-white hover:text-lp-primary transition-colors" data-liked="false" data-likes="1800" aria-label="收藏/取消收藏">
+                  <i data-lucide="heart" class="w-4 h-4"></i><span class="text-sm lp-mono" data-likes-label>1.8k</span>
+                </button>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" data-photo-id="w4" class="lp-card group relative rounded-lp-lg overflow-hidden block bg-lp-surface-2 shadow-lp-sm reveal">
+            <img src="assets/image_3_r53wpn.jpg" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" alt="敦煌沙丘" loading="lazy">
+            <div class="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="flex items-center justify-between">
+                <h3 class="text-white font-medium text-sm">敦煌沙丘</h3>
+                <button type="button" class="lp-like-btn flex items-center gap-1 text-white hover:text-lp-primary transition-colors" data-liked="false" data-likes="3100" aria-label="收藏/取消收藏">
+                  <i data-lucide="heart" class="w-4 h-4"></i><span class="text-sm lp-mono" data-likes-label>3.1k</span>
+                </button>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" data-photo-id="w5" class="lp-card group relative rounded-lp-lg overflow-hidden block bg-lp-surface-2 shadow-lp-sm reveal">
+            <img src="assets/image_4_r53wpn.jpg" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" alt="极光湖映" loading="lazy">
+            <div class="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="flex items-center justify-between">
+                <h3 class="text-white font-medium text-sm">极光湖映</h3>
+                <button type="button" class="lp-like-btn flex items-center gap-1 text-white hover:text-lp-primary transition-colors" data-liked="false" data-likes="4500" aria-label="收藏/取消收藏">
+                  <i data-lucide="heart" class="w-4 h-4"></i><span class="text-sm lp-mono" data-likes-label>4.5k</span>
+                </button>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" data-photo-id="w6" class="lp-card group relative rounded-lp-lg overflow-hidden block bg-lp-surface-2 shadow-lp-sm reveal">
+            <img src="assets/image_5_r53wpn.jpg" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" alt="霓虹不夜城" loading="lazy">
+            <div class="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="flex items-center justify-between">
+                <h3 class="text-white font-medium text-sm">霓虹不夜城</h3>
+                <button type="button" class="lp-like-btn flex items-center gap-1 text-white hover:text-lp-primary transition-colors" data-liked="false" data-likes="2700" aria-label="收藏/取消收藏">
+                  <i data-lucide="heart" class="w-4 h-4"></i><span class="text-sm lp-mono" data-likes-label>2.7k</span>
+                </button>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 空状态（收藏为空时显示） -->
+        <div id="empty-state" class="hidden text-center py-16">
+          <div class="w-14 h-14 mx-auto rounded-lp-full bg-lp-surface-2 flex items-center justify-center mb-4">
+            <i data-lucide="bookmark" class="w-7 h-7 text-lp-fg-subtle"></i>
+          </div>
+          <p class="lp-body text-lp-fg-muted">这里还空着，去发现喜欢的光影吧。</p>
+          <a href="index.html" class="inline-flex items-center gap-1.5 mt-4 px-4 h-9 rounded-lp-md bg-lp-primary text-white text-sm font-medium hover:bg-lp-primary-hover transition-colors">
+            去发现<i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </section>
+    </div>
+    <!-- /#profile-root -->
+
+    <!-- 移动端底部 Tab Bar（由 partial.js 注入） -->
+    <div data-include="tabbar"></div>
+  </main>
+
+  <!-- 图片灯箱由 app.js 共享注入 -->
+
+  <!-- 编辑资料弹窗 -->
+  <div id="edit-modal" class="lp-modal hidden fixed inset-0 z-[90] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="编辑资料">
+    <div class="w-full max-w-md rounded-lp-lg bg-lp-surface shadow-lp-overlay border border-lp-border">
+      <div class="flex items-center justify-between px-5 h-14 border-b border-lp-border">
+        <h2 class="lp-h3 text-lp-fg">编辑资料</h2>
+        <button data-modal-close class="w-8 h-8 rounded-lp-full flex items-center justify-center text-lp-fg-muted hover:bg-lp-surface-2 transition-colors" aria-label="关闭"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <form id="edit-form" class="p-5 space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-lp-fg mb-1.5" for="edit-name">昵称</label>
+          <input id="edit-name" name="name" type="text" value="阿哲" maxlength="20" class="w-full h-10 px-3 rounded-lp-md bg-lp-bg border border-lp-input text-lp-fg text-sm focus:border-lp-ring outline-none transition-colors">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-lp-fg mb-1.5" for="edit-tagline">一句话介绍</label>
+          <textarea id="edit-tagline" name="tagline" rows="2" maxlength="60" class="w-full px-3 py-2 rounded-lp-md bg-lp-bg border border-lp-input text-lp-fg text-sm focus:border-lp-ring outline-none transition-colors resize-none">追逐光影的旅人 | 用镜头记录世界的呼吸</textarea>
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" data-modal-close class="px-4 h-9 rounded-lp-md border border-lp-border-strong text-lp-fg text-sm font-medium hover:bg-lp-surface-2 transition-colors">取消</button>
+          <button type="submit" class="px-4 h-9 rounded-lp-md bg-lp-primary text-white text-sm font-medium hover:bg-lp-primary-hover transition-colors">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 分享弹窗 -->
+  <div id="share-modal" class="lp-modal hidden fixed inset-0 z-[90] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="分享主页">
+    <div class="w-full max-w-sm rounded-lp-lg bg-lp-surface shadow-lp-overlay border border-lp-border">
+      <div class="flex items-center justify-between px-5 h-14 border-b border-lp-border">
+        <h2 class="lp-h3 text-lp-fg">分享主页</h2>
+        <button data-modal-close class="w-8 h-8 rounded-lp-full flex items-center justify-center text-lp-fg-muted hover:bg-lp-surface-2 transition-colors" aria-label="关闭"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="p-5 space-y-4">
+        <div class="flex items-center gap-2">
+          <input id="share-link" type="text" readonly value="" class="flex-1 h-10 px-3 rounded-lp-md bg-lp-bg border border-lp-input text-lp-fg-muted text-sm lp-mono">
+          <button id="share-copy" class="flex items-center gap-1.5 px-3 h-10 rounded-lp-md bg-lp-primary text-white text-sm font-medium hover:bg-lp-primary-hover transition-colors"><i data-lucide="copy" class="w-4 h-4"></i>复制</button>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <button data-share="weixin" class="flex flex-col items-center gap-1.5 py-3 rounded-lp-md border border-lp-border hover:bg-lp-surface-2 transition-colors text-lp-fg-muted"><i data-lucide="message-circle" class="w-5 h-5"></i><span class="text-xs">微信</span></button>
+          <button data-share="weibo" class="flex flex-col items-center gap-1.5 py-3 rounded-lp-md border border-lp-border hover:bg-lp-surface-2 transition-colors text-lp-fg-muted"><i data-lucide="send" class="w-5 h-5"></i><span class="text-xs">微博</span></button>
+          <button data-share="qrcode" class="flex flex-col items-center gap-1.5 py-3 rounded-lp-md border border-lp-border hover:bg-lp-surface-2 transition-colors text-lp-fg-muted"><i data-lucide="qr-code" class="w-5 h-5"></i><span class="text-xs">二维码</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚（由 partial.js 注入） -->
+  <div data-include="footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/partial.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

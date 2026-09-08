@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF8F5">
+  <title>时间轴 — 风景光影</title>
+  <meta name="description" content="按时间顺序回顾阿哲的摄影旅程。">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="min-h-screen lp-bg lp-fg" data-page="timeline">
+  <main id="app">
+    <div data-include="nav"></div>
+
+    <div class="pt-16 pb-24 md:pb-12">
+      <section class="max-w-lp-container mx-auto px-4 sm:px-6 pt-6">
+        <p class="lp-caption text-sm text-lp-primary reveal">TIMELINE · 时间轴</p>
+        <h1 class="lp-h1 text-2xl sm:text-3xl text-lp-fg mt-1 reveal">光影编年</h1>
+        <p class="lp-body text-lp-fg-muted mt-2 reveal">按拍摄时间倒序，重温每一次出发。</p>
+      </section>
+
+      <section class="max-w-3xl mx-auto px-4 sm:px-6 mt-8">
+        <div id="timeline" class="relative border-l border-lp-border ml-3 sm:ml-4 space-y-6"></div>
+      </section>
+    </div>
+
+    <div data-include="tabbar"></div>
+  </main>
+
+  <div data-include="footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/partial.js"></script>
+  <script src="js/timeline.js"></script>
+</body>
+</html>

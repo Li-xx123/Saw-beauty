@@ -1,0 +1,193 @@
+/* ============================================================
+   风景光影 — Landscape Photo App Brand CSS
+   Direction: 自然 · 沉浸 · 留白多 · 照片为主角
+   Primary: 暮色橙 (Twilight Orange) · low-saturation warm accent
+   Base: 米白 / 雾灰 (warm cream white / fog gray)
+   ============================================================ */
+
+/* ---------- Root Tokens (Light Mode) ---------- */
+:root {
+  /* Brand primary scale — twilight orange */
+  --lp-primary: #C2784A;
+  --lp-primary-hover: #B06A3E;
+  --lp-primary-foreground: #FFFFFF;
+  --lp-primary-light: #F5E6D9;
+  --lp-primary-tint: #FAF0E6;
+
+  /* Neutral / surface scale — warm cream white */
+  --lp-background: #FAF8F5;
+  --lp-surface: #FFFFFF;
+  --lp-surface-2: #F5F2ED;
+  --lp-surface-3: #EFEAE3;
+  --lp-foreground: #2A2520;
+  --lp-foreground-muted: #6B6258;
+  --lp-foreground-subtle: #9B9286;
+  --lp-border: #E8E2DA;
+  --lp-border-strong: #D5CCC0;
+  --lp-input: #E8E2DA;
+  --lp-ring: #C2784A;
+
+  /* Semantic aliases — required by apply-html-head-contract */
+  --lp-card: #FFFFFF;
+  --lp-card-foreground: #2A2520;
+  --lp-popover: #FFFFFF;
+  --lp-popover-foreground: #2A2520;
+  --lp-muted: #F5F2ED;
+  --lp-muted-foreground: #6B6258;
+
+  /* Radius scale — restrained (max 16px) */
+  --lp-radius-small: 4px;
+  --lp-radius-medium: 8px;
+  --lp-radius-large: 16px;
+  --lp-radius-full: 9999px;
+
+  /* Shadows — alpha ≤ 0.05 for static, deeper for floating */
+  --lp-shadow-sm: 0 1px 2px rgba(42,37,32,0.04), 0 1px 1px rgba(42,37,32,0.03);
+  --lp-shadow-md: 0 4px 12px -4px rgba(42,37,32,0.05);
+  --lp-shadow-float: 0 8px 24px -8px rgba(42,37,32,0.18);
+  --lp-shadow-overlay: 0 24px 60px -20px rgba(42,37,32,0.30);
+
+  /* Typography */
+  --lp-font-sans: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --lp-font-mono: "JetBrains Mono", "Fira Code", ui-monospace, "SF Mono", monospace;
+
+  /* State colors — semantic only */
+  --state-success: #5B8C5A;
+  --state-warning: #C4943D;
+  --state-error: #B85547;
+  --state-info: #5B7C99;
+
+  /* Smooth theme transition */
+  --lp-theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ---------- Dark Mode ---------- */
+.dark {
+  --lp-primary: #D4895C;
+  --lp-primary-hover: #C2784A;
+  --lp-primary-foreground: #1A1612;
+  --lp-primary-light: #3D2E22;
+  --lp-primary-tint: #2A2018;
+
+  --lp-background: #14121A;
+  --lp-surface: #1C1A22;
+  --lp-surface-2: #252330;
+  --lp-surface-3: #2E2B3A;
+  --lp-foreground: #EDE8E0;
+  --lp-foreground-muted: #A09890;
+  --lp-foreground-subtle: #6B6258;
+  --lp-border: #2E2B3A;
+  --lp-border-strong: #3A3645;
+  --lp-input: #2E2B3A;
+  --lp-ring: #D4895C;
+
+  --lp-card: #1C1A22;
+  --lp-card-foreground: #EDE8E0;
+  --lp-popover: #1C1A22;
+  --lp-popover-foreground: #EDE8E0;
+  --lp-muted: #252330;
+  --lp-muted-foreground: #A09890;
+
+  --lp-shadow-sm: 0 1px 2px rgba(0,0,0,0.20), 0 1px 1px rgba(0,0,0,0.15);
+  --lp-shadow-md: 0 4px 12px -4px rgba(0,0,0,0.25);
+  --lp-shadow-float: 0 8px 24px -8px rgba(0,0,0,0.40);
+  --lp-shadow-overlay: 0 24px 60px -20px rgba(0,0,0,0.50);
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--lp-font-sans);
+  background-color: var(--lp-background);
+  color: var(--lp-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  transition: var(--lp-theme-transition);
+}
+
+/* Apply theme transition to themed surfaces */
+.lp-surface, .lp-surface-2, .lp-bg, nav, .lp-card {
+  transition: var(--lp-theme-transition);
+}
+
+/* ---------- Typography Classes ---------- */
+.lp-display { font-family: var(--lp-font-sans); font-weight: 600; letter-spacing: -0.03em; line-height: 1.02; }
+.lp-h1 { font-family: var(--lp-font-sans); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
+.lp-h2 { font-family: var(--lp-font-sans); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; }
+.lp-h3 { font-family: var(--lp-font-sans); font-weight: 600; letter-spacing: -0.01em; line-height: 1.35; }
+.lp-body-lg { font-family: var(--lp-font-sans); font-weight: 400; line-height: 1.55; }
+.lp-body { font-family: var(--lp-font-sans); font-weight: 400; line-height: 1.6; }
+.lp-caption { font-family: var(--lp-font-sans); font-weight: 400; letter-spacing: 0.005em; line-height: 1.5; }
+.lp-mono { font-family: var(--lp-font-mono); font-weight: 500; line-height: 1.5; font-variant-numeric: tabular-nums; }
+
+/* ---------- Accessibility & motion ---------- */
+:focus-visible {
+  outline: 2px solid var(--lp-ring);
+  outline-offset: 2px;
+  border-radius: var(--lp-radius-small);
+}
+
+/* Reveal-on-scroll: only animate when motion is allowed */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Skip reveal animation for reduced-motion users (just show content) */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide scrollbar utility for horizontal scroll rows */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Theme toggle icon crossfade */
+.theme-icon-sun, .theme-icon-moon {
+  transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+html.light .theme-icon-moon { opacity: 1; transform: rotate(0deg); }
+html.light .theme-icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.4); position: absolute; }
+html.dark .theme-icon-sun { opacity: 1; transform: rotate(0deg); }
+html.dark .theme-icon-moon { opacity: 0; transform: rotate(90deg) scale(0.4); position: absolute; }
+
+/* Lock body scroll when a modal is open */
+body.modal-open { overflow: hidden; }
+
+/* Like button pop animation */
+@keyframes lp-like-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.3); }
+  70%  { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+.lp-like-pop { animation: lp-like-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* Filled like state — attribute selector beats .text-white utility */
+.lp-like-btn[data-liked="true"] { color: var(--lp-primary) !important; }
+.lp-like-btn[data-liked="true"] svg { fill: currentColor; }
+
+/* Scrolled nav gets a stronger hairline + slightly denser surface */
+[data-nav][data-scrolled="true"] {
+  background-color: color-mix(in srgb, var(--lp-surface) 92%, transparent);
+  box-shadow: var(--lp-shadow-sm);
+}
